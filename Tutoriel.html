@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<meta charset="UTF-8">
+	<title>Tutoriel</title>
+</head>
+<body>
+		<h1>Les balises</h1>
+	<p>Une balise sert à structurer les donnees. Elle commence de cette manière '<', on ajoute le nom de la balise, et on la ferme avec '>'. Exemple : <tag> , tag est un nom générique il peut etre div, span... .</p>
+	<p>On distingue deux types de balises: ouvrantes et fermantes. 
+		<h2>Balise ouvrante</h2>
+	<div><!-- balise ouvrante -->
+		Contenu...
+	</div> <!--balise fermante -->
+	<p>Dans le premier cas, on a également des balises ouvrantes autofermantes. Exemple : <img/> Il n'y a pas de balises fermantes </img>
+	</p>
+	<p>Nos balises sont des indicateurs pour le navigateur. L'utilisateur ne perçoit que le contenu. </p>
+	<p>Dans certains cas, nous avons besoin de plus d'informations à transmettre au navigateur. Pour une image, il faut lui donner l'url de l'image. On utilise lm'attribut 'src' au sein de la balise. Exemple: une image <img src="url_de_mon_image.jpg"/> On donne des infos supplémentaires au navigateur. Je vais chercher l'image et l'afficher.
+	</p>
+		<h1>Les attributs</h1>
+	<p>Les attributs se situent TOUJOURS a l'intérieur de la balise à laquelle ils sont associés
+On distingue deux types d'attributs:
+	</p>
+		<ul>
+			<li>obligatoire (sans lesquels la balise n'a pas de sens: comme 'src' de <img>)</li>
+			<li>optionnel, comme son nom l'indique, il est optionnel (malin).Exemple: 'title'</li>
+		</ul>
+		<code>
+			<img src="" alt="texte alternatif qui s'affichera pour décrire le contenu de l'image (OBLIGATOIRE)"/>
+		</code>
+		<p>alt pour les personnes qui ont des pbs de vue et donc quand l'image ne s'affiche pas - cela permet de décrire la photo..</p>
+		<p title="un paragraphe qui court">
+			Dans une otpique d'accessibilité, il est vital de mettre ces balises 'alt'.
+		</p>
+		<p>
+			Les attributs ont une casse spéciale: pas de majuscule, pas de chiffre, pas de caractère spécial ($ ou autre).
+			On les sépare entre eux par des espaces. Il fonctionne sur un système de "clé-valeur". Exemple cle="valeur" : src="course.jpg". dans cet exemple, la clé est 'src' et la valeur 'course.jpg'.
+			On peut créer des attributs arbitraires auxquels je peux créer n'importe quelle valeur. Ils sont surtout uttilisés en javascript pour faliciter la sélection et la manipulation de blocs spécifiques.
+
+			<em>
+				Exemple : <img src="course.jpg" simplon="cours_01" alt="Démo d'un attribut perso"/>
+			</em>
+		</p>
+		<h3>ID et Class</h3>
+		<p>
+			L'attribut 'id' identifie de manière unique un élémént.
+		</p>
+		<p>
+			L'attribut 'class' permet une mise en forme (par le CSS)
+		</p>
+		<code>
+			<img src: "" alt"" class"fullscreen" />
+		</code>
+		<p>
+			Dans le Css, on aura donc la définition de la class '.fullscreen' :  {width: 100%;}'
+		</p>
+			<h4>Autre balises</h4>
+			<code>
+			<div></div>
+			<span></span>
+			<img src="" alt""/>
+			<br>
+			<nav></nav>
+			<blockquote>Ceci est une citation.</blockquote>
+			<a href="Ceci est une 'anchor' en anglais."</a>
+			</code>
+			<h3>Entité Html</h3>
+			<p>
+				&reg;
+			</p>
+			<p> http://www.wikiwand.com/fr/Liste_des_r%C3%A9f%C3%A9rences_d%27entit%C3%A9s_de_caract%C3%A8res_en_XML_et_HTML
+			</p>
+			<p>
+			Pour afficher des <div> (il n'y aura rien, car le navigateur va l'interprérer comme une balise 'div', il faut :
+			il faut 
+			<br>
+			¹lt;div&gt;
+			<br>
+			lt : lower-than-sign
+			<br>
+			gt : greater-than-sign
+		</p>
+		<br>
+		<br>
+
+		<h1>Le CSS</h1>
+		<p>Cascading Style Sheet</p>
+		<p>
+			Pour la mise en forme et la présentation de bloacs Html. Le Html s'occupe du fond, du texte et du contenu.
+		</p>
+			<h3>POurquoi Cascading ?</h3>
+		<p>
+			Style Sheet: feuille de style. <br>
+			Mais pourquoi : la cascade? On commence de haut en bas l'interprétation de nos éléments. Ceux qui ont la plus grande priorité vers le bas.
+
+			<code>
+				.foo{
+				color:blue;
+				border: 1px solid yellow;
+			}
+
+				... un peu plus loin...
+
+			.foo{
+			color:red;
+		}
+			</code>
+
+		<h6>Largeur de la bordure ?</h6>
+		<p>
+			1px: on n'a pas TOUT écrasé. Uniquement les règles qui sont ré-écrites. Dans notre cas, uniquement la règle'color a été remplacée.
+			!important a glissé entre la valeur et le ; pour debugger.
+		</p>
+		 	<h2>La spécificité en CSS</h2>
+		 	<ul>
+		 		<li>ordre d'importance</li>
+		 		<li>id -> class -> élément html de base</li>
+		 	</ul>
+		 	<code>
+		 		<p class="big lettrine" id="foo"></p>
+		 		#foo {...}
+		 		.foo{...}
+		 		p {....}
+		 	</code>
+		 	<p>
+		 		Dans cet exemple, on va du plus précis au plus générique : de l'id 'foo', puis la classe 'big' et enfion l'élement 'p'.
+		 		Le navigateur télécharge le html et ensuite la feuille de style et fais le lien en commençant d'abord a appliquer les choses par cascade puis en sélectionnnant par ordre de spécificités../ FLOUS
+		 	</p>
+		 <h3>Sélection en CSS</h3>
+		<p>
+			Pour sélectionner un élément Html, le nom seul suffit:
+			h1{...}
+			p{...}
+		</p>
+		<p>
+			Pour sélectionnner une classe, on ajoute le préfixe '.' :
+			.maClass {...}
+		</p>
+		<p>
+			Pour sélectionnner via l'id, on ajoute le préfixe '#' :
+			"idunique {...}
+		</p>
+		<p>
+			Pour sélectionnner via l'attribut :
+			[kawai] {...}
+			[kawai=1000]{ /* Sélectionner}
+		</p>
+		<h3>Les blocs</h3>
+		<p>display:block, inline, inline-block, flex
+			element de type block car il prend par default toute la taille de la page
+			Le navigateur emploie les feuilles de style par defautlt mais on peut les modifier.
+
+			<h5>Le box model</h5> 
+			<p>élément > padding > bordure > marge
+			Width défini la largeur de l'élément, le padding et la bordure mais sans la marge.
+
+			règle : box-sizing:paddin-box > ne pas prendre en compte le padding et la bordure avoir une Largeur stricte telle qu'on l'a demandé à la base.
+
+			box-sizing : border-box > pour s'affranchir des conditions de base du navigateur.</p>
+
+			<h3>SOC Separation of concerns</h3>
+			<p> on separe les élements qui n'ont pas de lien direct entre eux. 
+				<ul><li>optique de maintenance</li>
+					<li> évolutyivité</li>
+					<li>standart</li>
+				</ul>
+			</p>
+			<p>separation font(html), forme(CSS), interaction (javascript). But rendre le travail plus simple et prévisible.</p>
+
+</body>
+</html>
